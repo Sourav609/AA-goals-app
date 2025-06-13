@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekly Goal App</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icon.png" />
+</head>
+<body>
+  <div class="container">
+    <h1>📅 Weekly Goal App</h1>
+
+    <form id="task-form">
+      <input type="text" id="task-title" placeholder="Task title" required />
+      <input type="datetime-local" id="task-time" required />
+      <button type="submit">➕ Add Task</button>
+    </form>
+
+    <ul id="task-list"></ul>
+  </div>
+
+  <audio id="alarm-audio" src="alarm.mp3" preload="auto"></audio>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js')
+        .then(() => console.log("✅ Service Worker Registered"))
+        .catch(err => console.error("❌ SW Error", err));
+    }
+  </script>
+</body>
+</html>
